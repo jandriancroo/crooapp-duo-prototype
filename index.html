@@ -216,7 +216,7 @@ function menuHtml(){var h='<div class="dim"></div><div class="menu glass" style=
  h+='<div class="msep"></div>';[['Inventory',P.box],['Reporting',P.chart],['Team',P.team],['Settings',P.gear]].forEach(function(m){h+='<div class="mi">'+sv(m[1],22)+m[0]+'</div>'});
  return h+'<div class="me"><img src="'+IMG.me+'" alt=""><div><b>Jordan</b><small>Super admin</small></div></div></div>'}
 function front(theme,menu,open){
- var c='<div class="half" style="left:0;right:0"><div class="date">Saturday, Oct 24</div>'+theo()+quick()+'<div style="height:10px"></div>'+promo(210,96)+cubes(158)+sales(196,382)+checks(5)+'</div>';
+ var c='<div class="half" style="left:0;right:0"><div class="date">Saturday, Oct 24</div>'+theo().replace('class="theo"','class="theo" style="padding-right:112px"')+quick()+'<div style="height:10px"></div>'+promo(238,96)+cubes(158)+sales(196,382)+checks(5)+'<div style="height:96px"></div></div>';
  var h='<div class="scr fr '+theme+'" style="width:466px;height:678px">'+c+status(392)+loc();
  if(menu){h+=menuHtml();h+='<div style="display:none"><div class="brand"><i>'+sv(P.flame,20)+'</i><div><b>CrooHQ</b><small>Hemet</small></div></div>';
   [['Dash',P.grid,1],['Chat',P.chat,0,'1'],['Tasks',P.task],['Logs',P.doc],['Schedule',P.cal]].forEach(function(m){h+='<div class="mi'+(m[2]?' on':'')+'">'+sv(m[1],22)+m[0]+(m[3]?'<span class="bd">'+m[3]+'</span>':'')+'</div>'});
@@ -237,7 +237,7 @@ window.addEventListener('resize',fit);fit();
 /* Device mode: open this page with #device on the phone. Fills the screen, Front or Full by width, and is tappable. */
 if(true){
  var st={theme:(matchMedia('(prefers-color-scheme: dark)').matches?'oled':'paper'),menu:false,open:false};
- var css=document.createElement('style');css.textContent='html,body{margin:0;padding:0!important;height:100%;overflow:hidden;background:#000}.wrap{display:none}#dev{position:fixed;inset:0;overflow:hidden}#dev .scr{border-radius:0!important;box-shadow:none!important;transform-origin:0 0;position:absolute;left:0;top:0}#dev .tip{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);font:600 12px Manrope,sans-serif;color:#999;background:rgba(0,0,0,.55);padding:6px 12px;border-radius:999px;z-index:99;pointer-events:none;transition:opacity .6s}';document.head.appendChild(css);
+ var css=document.createElement('style');css.textContent='html,body{margin:0;padding:0!important;height:100%;overflow:hidden;background:#000}.wrap{display:none}#dev{position:fixed;inset:0;overflow:hidden}#dev .half{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}#dev .half::-webkit-scrollbar{display:none}#dev .scr{border-radius:0!important;box-shadow:none!important;transform-origin:0 0;position:absolute;left:0;top:0}#dev .tip{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);font:600 12px Manrope,sans-serif;color:#999;background:rgba(0,0,0,.55);padding:6px 12px;border-radius:999px;z-index:99;pointer-events:none;transition:opacity .6s}';document.head.appendChild(css);
  var host=document.createElement('div');host.id='dev';document.body.appendChild(host);
  function draw(){var W=innerWidth,H=innerHeight,isFull=W>=600,html=isFull?full(st.theme,st.open,st.menu):front(st.theme,st.menu,st.open),bw=isFull?951:466,bh=isFull?669:678;
   host.innerHTML=html+'<div class="tip" id="tip">Tap the date to switch Paper / OLED · fold to switch layouts</div>';var sc=host.querySelector('.scr');var k=Math.min(W/bw,H/bh);sc.style.transform='scale('+k+')';sc.style.left=((W-bw*k)/2)+'px';sc.style.top=((H-bh*k)/2)+'px';
