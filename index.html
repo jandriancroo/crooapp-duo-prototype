@@ -272,6 +272,7 @@ function full(theme,open,menu,DH,BW,OX){DH=DH||669;BW=BW||951;OX=OX||880;
 function menuHtml(){var h='<div class="dim"></div><div class="menu glass" style="width:292px"><div class="brand"><i>'+sv(P.flame,20)+'</i><div><b>CrooHQ</b><small>Hemet</small></div></div>';
  [['Dash',P.grid,1],['Chat',P.chat,0,'1'],['Tasks',P.task],['Logs',P.doc],['Schedule',P.cal]].forEach(function(m){h+='<div class="mi'+(m[2]?' on':'')+'">'+sv(m[1],22)+m[0]+(m[3]?'<span class="bd">'+m[3]+'</span>':'')+'</div>'});
  h+='<div class="msep"></div>';[['Inventory',P.box],['Reporting',P.chart],['Team',P.team],['Settings',P.gear]].forEach(function(m){h+='<div class="mi">'+sv(m[1],22)+m[0]+'</div>'});
+ h+='<div class="mi upd">'+sv('<path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/>',22)+'Update</div>';
  return h+'<div class="me"><img src="'+IMG.me+'" alt=""><div><b>Jordan</b><small>Super admin</small></div></div></div>'}
 function front(theme,menu,open,DH,BW,OX){DH=DH||678;BW=BW||466;OX=OX||396;
  var c='<div class="half" style="left:0;right:0"><div class="date">Saturday, Oct 24</div>'+theo()+quick()+'<div style="height:10px"></div>'+promo(238,BW===466?96:16)+cubes(204)+sales(196,BW===466?382:BW)+checks(5)+'<div style="height:96px"></div></div>';
@@ -298,13 +299,13 @@ if(true){
  var css=document.createElement('style');css.textContent='html,body{margin:0;padding:0!important;height:100%;overflow:hidden;background:#000}.wrap{display:none}#dev{position:fixed;inset:0;overflow:hidden}#dev .status{display:none!important}#dev,#dev *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#dev .half{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}#dev .half::-webkit-scrollbar{display:none}#dev .scr{border-radius:0!important;box-shadow:none!important;transform-origin:0 0;position:absolute;left:0;top:0}#dev .tip{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);font:600 12px Manrope,sans-serif;color:#999;background:rgba(0,0,0,.55);padding:6px 12px;border-radius:999px;z-index:99;pointer-events:none;transition:opacity .6s}';document.head.appendChild(css);
  var host=document.createElement('div');host.id='dev';document.body.appendChild(host);
  function draw(){var W=innerWidth,H=innerHeight,isFull=W>=600,BW=W,OX=W-78,html=isFull?full(st.theme,st.open,st.menu,H,BW,OX):front(st.theme,st.menu,st.open,H,BW,OX);
-  host.innerHTML=html+'<div class="tip" id="tip">'+(st.tfshow?'<b style="font-size:16px;color:#fff">Titles: '+(st.tf?'B · SF Pro (Apple)':'A · Manrope (original)')+'</b>':'Tap date: Paper/OLED · hold date: reload · v15')+'</div>';var sc=host.querySelector('.scr');sc.classList.toggle('tfsf',!!st.tf);var q=host.querySelector('.sh');if(q)q.onclick=function(){st.tf=st.tf?0:1;st.tfshow=1;draw();st.tfshow=0};sc.style.transform='none';sc.style.left='0';sc.style.top='0';
+  host.innerHTML=html+'<div class="tip" id="tip">'+(st.tfshow?'<b style="font-size:16px;color:#fff">Titles: '+(st.tf?'B · SF Pro (Apple)':'A · Manrope (original)')+'</b>':'Tap date: Paper/OLED · Menu → Update to reload · v16')+'</div>';var sc=host.querySelector('.scr');sc.classList.toggle('tfsf',!!st.tf);var q=host.querySelector('.sh');if(q)q.onclick=function(){st.tf=st.tf?0:1;st.tfshow=1;draw();st.tfshow=0};sc.style.transform='none';sc.style.left='0';sc.style.top='0';
   setTimeout(function(){var t=document.getElementById('tip');if(t)t.style.opacity=0},3500);
   host.querySelector('.date').onclick=function(){st.theme=st.theme==='paper'?'oled':'paper';draw()};
   host.querySelectorAll('.ab').forEach(function(b){b.onclick=function(){st.open=!st.open;st.menu=false;draw()}});
   var hd=host.querySelector('.hdl');if(hd)hd.onclick=function(){st.menu=true;st.open=false;draw()};
   host.querySelectorAll('.dim').forEach(function(x){x.onclick=function(){st.menu=false;st.open=false;draw()}});
-  host.querySelectorAll('.mi').forEach(function(x){x.onclick=function(){st.menu=false;draw()}});
+  host.querySelectorAll('.mi').forEach(function(x){x.onclick=function(){st.menu=false;draw()}});var ub=host.querySelector('.mi.upd');if(ub)ub.onclick=function(e){e.stopPropagation();location.href=location.pathname+'?r='+Date.now()};
  }
  addEventListener('resize',draw);draw();
  (function(){var V='v4';var t;document.addEventListener('contextmenu',function(e){e.preventDefault()});document.addEventListener('touchstart',function(e){if(e.target.closest&&e.target.closest('.date')){t=setTimeout(function(){location.href=location.pathname+'?r='+Date.now()},700)}},{passive:true});['touchend','touchmove','touchcancel'].forEach(function(n){document.addEventListener(n,function(){clearTimeout(t)},{passive:true})});
