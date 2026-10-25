@@ -167,7 +167,14 @@ h1{font-size:30px;margin:0 0 6px;letter-spacing:-.02em}h2{font-size:21px;margin:
 .cc{gap:3px}
 .cc b{font-size:16px}.cc small{font-size:11.5px}
 /* date keeps the original font */
-.date,.sh,.cube .k,.sale small{font-family:'Manrope',sans-serif!important}.tfsf .date,.tfsf .sh,.tfsf .cube .k,.tfsf .sale small{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif!important}
+.date,.sh,.cube .k,.sale small{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display','Helvetica Neue',sans-serif!important}.tfsf .date,.tfsf .sh,.tfsf .cube .k,.tfsf .sale small{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif!important}
+
+/* Apple Mail typography (SF Pro): primary rows semibold 17, secondary regular, tracked like system text */
+body,.scr{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased}
+.nm{font-weight:600!important;font-size:17px!important;letter-spacing:-.022em!important}
+.theo{font-size:15.5px!important;font-weight:400!important;letter-spacing:-.012em}.theo b{font-weight:600!important}
+.lr small,.lr .sb{font-weight:400}
+.date,.sh,.cube .k{font-weight:600!important;letter-spacing:.06em!important}
 </style>
 
 </head>
@@ -277,11 +284,11 @@ window.addEventListener('resize',fit);fit();
 
 /* Device mode: open this page with #device on the phone. Fills the screen, Front or Full by width, and is tappable. */
 if(true){
- var st={tf:0,theme:(matchMedia('(prefers-color-scheme: dark)').matches?'oled':'paper'),menu:false,open:false};
+ var st={tf:1,theme:(matchMedia('(prefers-color-scheme: dark)').matches?'oled':'paper'),menu:false,open:false};
  var css=document.createElement('style');css.textContent='html,body{margin:0;padding:0!important;height:100%;overflow:hidden;background:#000}.wrap{display:none}#dev{position:fixed;inset:0;overflow:hidden}#dev .status{display:none!important}#dev,#dev *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#dev .half{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}#dev .half::-webkit-scrollbar{display:none}#dev .scr{border-radius:0!important;box-shadow:none!important;transform-origin:0 0;position:absolute;left:0;top:0}#dev .tip{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);font:600 12px Manrope,sans-serif;color:#999;background:rgba(0,0,0,.55);padding:6px 12px;border-radius:999px;z-index:99;pointer-events:none;transition:opacity .6s}';document.head.appendChild(css);
  var host=document.createElement('div');host.id='dev';document.body.appendChild(host);
  function draw(){var W=innerWidth,H=innerHeight,isFull=W>=600,BW=W,OX=W-78,html=isFull?full(st.theme,st.open,st.menu,H,BW,OX):front(st.theme,st.menu,st.open,H,BW,OX);
-  host.innerHTML=html+'<div class="tip" id="tip">'+(st.tfshow?'<b style="font-size:16px;color:#fff">Titles: '+(st.tf?'B · SF Pro (Apple)':'A · Manrope (original)')+'</b>':'Tap date: Paper/OLED · tap Quick Tasks: swap title font A/B · hold date: reload · v12')+'</div>';var sc=host.querySelector('.scr');sc.classList.toggle('tfsf',!!st.tf);var q=host.querySelector('.sh');if(q)q.onclick=function(){st.tf=st.tf?0:1;st.tfshow=1;draw();st.tfshow=0};sc.style.transform='none';sc.style.left='0';sc.style.top='0';
+  host.innerHTML=html+'<div class="tip" id="tip">'+(st.tfshow?'<b style="font-size:16px;color:#fff">Titles: '+(st.tf?'B · SF Pro (Apple)':'A · Manrope (original)')+'</b>':'Tap date: Paper/OLED · hold date: reload · v13')+'</div>';var sc=host.querySelector('.scr');sc.classList.toggle('tfsf',!!st.tf);var q=host.querySelector('.sh');if(q)q.onclick=function(){st.tf=st.tf?0:1;st.tfshow=1;draw();st.tfshow=0};sc.style.transform='none';sc.style.left='0';sc.style.top='0';
   setTimeout(function(){var t=document.getElementById('tip');if(t)t.style.opacity=0},3500);
   host.querySelector('.date').onclick=function(){st.theme=st.theme==='paper'?'oled':'paper';draw()};
   host.querySelectorAll('.ab').forEach(function(b){b.onclick=function(){st.open=!st.open;st.menu=false;draw()}});
