@@ -240,7 +240,7 @@ if(true){
  var css=document.createElement('style');css.textContent='html,body{margin:0;padding:0!important;height:100%;overflow:hidden;background:#000}.wrap{display:none}#dev{position:fixed;inset:0;overflow:hidden}#dev .scr{border-radius:0!important;box-shadow:none!important;transform-origin:0 0;position:absolute;left:0;top:0}#dev .tip{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);font:600 12px Manrope,sans-serif;color:#999;background:rgba(0,0,0,.55);padding:6px 12px;border-radius:999px;z-index:99;pointer-events:none;transition:opacity .6s}';document.head.appendChild(css);
  var host=document.createElement('div');host.id='dev';document.body.appendChild(host);
  function draw(){var W=innerWidth,H=innerHeight,isFull=W>=600,html=isFull?full(st.theme,st.open,st.menu):front(st.theme,st.menu,st.open),bw=isFull?951:466,bh=isFull?669:678;
-  host.innerHTML=html+'<div class="tip" id="tip">Tap the date to switch Paper / OLED · fold to switch layouts</div>';var sc=host.querySelector('.scr');var k=Math.max(W/bw,H/bh);if(W/bw<H/bh)k=W/bw;sc.style.transform='scale('+k+')';sc.style.height=(H/k)+'px';
+  host.innerHTML=html+'<div class="tip" id="tip">Tap the date to switch Paper / OLED · fold to switch layouts</div>';var sc=host.querySelector('.scr');var k=Math.min(W/bw,H/bh);sc.style.transform='scale('+k+')';sc.style.left=((W-bw*k)/2)+'px';sc.style.top=((H-bh*k)/2)+'px';
   setTimeout(function(){var t=document.getElementById('tip');if(t)t.style.opacity=0},2500);
   host.querySelector('.date').onclick=function(){st.theme=st.theme==='paper'?'oled':'paper';draw()};
   host.querySelectorAll('.ab').forEach(function(b){b.onclick=function(){st.open=!st.open;st.menu=false;draw()}});
