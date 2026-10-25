@@ -175,6 +175,13 @@ body,.scr{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Dis
 .theo{font-size:15.5px!important;font-weight:400!important;letter-spacing:-.012em}.theo b{font-weight:600!important}
 .lr small,.lr .sb{font-weight:400}
 .date,.sh,.cube .k{font-weight:600!important;letter-spacing:.06em!important}
+
+/* promo tracker: Apple Mail-style type */
+.promo .t{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif!important;font-weight:700!important;font-size:30px!important;line-height:1.05!important;letter-spacing:-.03em!important;text-transform:none!important}
+.promo .t small{font-weight:400!important;font-size:15px!important;letter-spacing:-.01em!important;opacity:.85!important;margin-top:6px!important}
+.live{font-weight:600!important;font-size:12px!important;letter-spacing:.04em}
+.rank{font-weight:600!important;font-size:15px!important;letter-spacing:-.01em}
+.rng span{font-weight:500!important;font-size:14px!important;letter-spacing:-.01em}.rng .on{font-weight:600!important}
 </style>
 
 </head>
@@ -288,7 +295,7 @@ if(true){
  var css=document.createElement('style');css.textContent='html,body{margin:0;padding:0!important;height:100%;overflow:hidden;background:#000}.wrap{display:none}#dev{position:fixed;inset:0;overflow:hidden}#dev .status{display:none!important}#dev,#dev *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#dev .half{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}#dev .half::-webkit-scrollbar{display:none}#dev .scr{border-radius:0!important;box-shadow:none!important;transform-origin:0 0;position:absolute;left:0;top:0}#dev .tip{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);font:600 12px Manrope,sans-serif;color:#999;background:rgba(0,0,0,.55);padding:6px 12px;border-radius:999px;z-index:99;pointer-events:none;transition:opacity .6s}';document.head.appendChild(css);
  var host=document.createElement('div');host.id='dev';document.body.appendChild(host);
  function draw(){var W=innerWidth,H=innerHeight,isFull=W>=600,BW=W,OX=W-78,html=isFull?full(st.theme,st.open,st.menu,H,BW,OX):front(st.theme,st.menu,st.open,H,BW,OX);
-  host.innerHTML=html+'<div class="tip" id="tip">'+(st.tfshow?'<b style="font-size:16px;color:#fff">Titles: '+(st.tf?'B · SF Pro (Apple)':'A · Manrope (original)')+'</b>':'Tap date: Paper/OLED · hold date: reload · v13')+'</div>';var sc=host.querySelector('.scr');sc.classList.toggle('tfsf',!!st.tf);var q=host.querySelector('.sh');if(q)q.onclick=function(){st.tf=st.tf?0:1;st.tfshow=1;draw();st.tfshow=0};sc.style.transform='none';sc.style.left='0';sc.style.top='0';
+  host.innerHTML=html+'<div class="tip" id="tip">'+(st.tfshow?'<b style="font-size:16px;color:#fff">Titles: '+(st.tf?'B · SF Pro (Apple)':'A · Manrope (original)')+'</b>':'Tap date: Paper/OLED · hold date: reload · v14')+'</div>';var sc=host.querySelector('.scr');sc.classList.toggle('tfsf',!!st.tf);var q=host.querySelector('.sh');if(q)q.onclick=function(){st.tf=st.tf?0:1;st.tfshow=1;draw();st.tfshow=0};sc.style.transform='none';sc.style.left='0';sc.style.top='0';
   setTimeout(function(){var t=document.getElementById('tip');if(t)t.style.opacity=0},3500);
   host.querySelector('.date').onclick=function(){st.theme=st.theme==='paper'?'oled':'paper';draw()};
   host.querySelectorAll('.ab').forEach(function(b){b.onclick=function(){st.open=!st.open;st.menu=false;draw()}});
